@@ -133,8 +133,11 @@ content:
       - { name: url, label: Διεύθυνση site, type: string }
       - { name: phone, label: Τηλέφωνο (όπως εμφανίζεται), type: string }
       - { name: phoneIntl, label: Τηλέφωνο διεθνές (+30...), type: string }
+      - { name: mobile, label: Κινητό (όπως εμφανίζεται), type: string }
+      - { name: mobileIntl, label: Κινητό διεθνές (+30...), type: string }
       - { name: email, label: Email, type: string }
       - { name: foundingYear, label: Έτος ίδρυσης, type: number }
+      - { name: certifications, label: Πιστοποιήσεις, type: string, list: true }
       - { name: facebook, label: Facebook, type: string }
       - { name: mapsUrl, label: Google Maps, type: string }
       - { name: ga4Id, label: Google Analytics ID (κενό = ανενεργό), type: string }
@@ -153,6 +156,15 @@ content:
           - { name: hours, label: Ωράριο, type: string }
           - { name: hoursEn, label: Ωράριο (EN), type: string }
           - { name: openingHours, label: "Ωράριο για Google (π.χ. Mo-Fr 09:00-17:00)", type: string, list: true }
+          - name: phones
+            label: Τηλέφωνα
+            type: object
+            list: true
+            fields:
+              - { name: label, label: Περιγραφή, type: string }
+              - { name: labelEn, label: Περιγραφή (EN), type: string }
+              - { name: number, label: Αριθμός (όπως εμφανίζεται), type: string }
+              - { name: intl, label: Αριθμός διεθνής (+30...), type: string }
 
   - name: pricing
     label: Τιμές

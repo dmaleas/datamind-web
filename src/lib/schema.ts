@@ -14,6 +14,7 @@ export function organization(lang: Lang) {
     email: site.email,
     telephone: site.phoneIntl,
     foundingDate: String(site.foundingYear),
+    hasCredential: site.certifications.map((c) => ({ '@type': 'EducationalOccupationalCredential', credentialCategory: 'certification', name: c })),
     sameAs: [site.facebook],
     department: site.locations.map((l, i) => ({
       '@type': 'ProfessionalService',
@@ -21,7 +22,7 @@ export function organization(lang: Lang) {
       name: en ? l.nameEn : l.name,
       description: en ? 'Data recovery services' : 'Υπηρεσίες ανάκτησης δεδομένων',
       url: site.url,
-      telephone: site.phoneIntl,
+      telephone: l.phones.map((ph) => ph.intl),
       email: site.email,
       priceRange: '€€',
       address: {

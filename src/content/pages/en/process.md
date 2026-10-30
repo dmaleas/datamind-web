@@ -6,7 +6,7 @@ description: The data recovery process at Datamind - initial contact, free couri
 
 ## 1. Contact
 
-Contact us by telephone on **+30 211 800 1320** or by email at **info@datamind.gr**.
+Contact us by telephone on **+30 211 800 1320** (call centre), **+30 261 110 4059** (Patras office) or **+30 697 410 7372** (mobile), or by email at **info@datamind.gr**.
 
 ## 2. Shipping
 
@@ -30,7 +30,7 @@ Your data is delivered on a storage medium (hard disk or USB flash drive) approp
 
 Your data is handled in strict **confidence**. It is retained by the company for 10 days so that you may confirm its complete recovery, after which it is permanently and irreversibly deleted from our servers.
 
-During this period the data is stored on servers with no internet connection, on an encrypted file system.
+During this period the data is stored on servers with no internet connection, on an encrypted file system. The company's procedures are certified to ISO 27001 for information security and ISO 9001 for quality management.
 
 ## Recovery time
 

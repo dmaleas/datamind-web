@@ -21,6 +21,7 @@ const year = new Date().getFullYear();
       <p class="muted">{t.footerAbout}</p>
       <p>
         <a href={`tel:${site.phoneIntl}`}>{site.phone}</a><br />
+        <a href={`tel:${site.mobileIntl}`}>{site.mobile}</a><br />
         <a href={`mailto:${site.email}`}>{site.email}</a>
       </p>
     </div>
@@ -51,7 +52,7 @@ const year = new Date().getFullYear();
     </div>
   </div>
   <div class="wrap footer-bottom">
-    <span>© {year} Datamind</span>
+    <span>© {year} Datamind · {en ? 'Certified' : 'Πιστοποίηση'} {site.certifications.join(' · ')}</span>
     <a href={site.facebook} rel="noopener">Facebook</a>
   </div>
 </footer>

@@ -19,6 +19,8 @@ Datamind invests continuously in modern equipment and in the training of its sta
 - ISO-100 clean room for the safe opening of hard disks
 - No charge if the data cannot be recovered
 - Your data is handled in strict confidence
+- ISO 27001 certification for information security
+- ISO 9001 certification for quality management
 
 ![Datamind clean room](/images/wp/2020/12/DSC_0077.jpg)
 

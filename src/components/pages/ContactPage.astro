@@ -39,7 +39,7 @@ const intro = en
             {en ? l.cityEn : l.city} {l.postalCode}
           </address>
           <dl>
-            <dt>{t.phone}</dt><dd><a href={`tel:${site.phoneIntl}`}>{site.phone}</a></dd>
+            {l.phones.map((ph) => (<><dt>{en ? ph.labelEn : ph.label}</dt><dd><a href={`tel:${ph.intl}`}>{ph.number}</a></dd></>))}
             <dt>Email</dt><dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
             <dt>{t.hours}</dt><dd>{en ? l.hoursEn : l.hours}</dd>
           </dl>
