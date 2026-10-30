@@ -1,0 +1,107 @@
+/*
+  Alternative designs. The active one is chosen in src/data/design.json:
+    "a" = Σκούρο μπλε & πορτοκαλί (default, global.css only)
+    "b" = Εταιρικό λευκό: light, corporate blue, serif headings
+    "c" = Τεχνολογικό σκούρο: dark, teal accents, lab/forensics feel
+*/
+
+/* ---------------- B: Εταιρικό λευκό ---------------- */
+[data-design="b"] {
+  --accent: #0b4f9c;
+  --accent-ink: #ffffff;
+  --link: #0b4f9c;
+  --bg-alt: #f4f7fb;
+  --line: #dde5ee;
+  --serif: Georgia, "Noto Serif", "Times New Roman", serif;
+}
+[data-design="b"] h1, [data-design="b"] h2 { font-family: var(--serif); font-weight: 600; letter-spacing: 0; }
+[data-design="b"] .btn { border-radius: 4px; }
+[data-design="b"] .btn-accent:hover { background: #093f7d; }
+
+[data-design="b"] .site-header { background: #fff; color: var(--navy); box-shadow: 0 1px 0 var(--line); }
+[data-design="b"] .brand { color: var(--navy); }
+[data-design="b"] .nav-list a { color: #2c3e52; }
+[data-design="b"] .nav-list a:hover, [data-design="b"] .nav-list a[aria-current="page"] { color: var(--navy); background: #eef3f9; }
+[data-design="b"] .lang a { border-color: #cbd5e1; }
+[data-design="b"] .nav-toggle { color: var(--navy); }
+@media (max-width: 1020px) {
+  [data-design="b"] .sub a { color: #4a5c70; }
+  [data-design="b"] .sub a:hover { background: #eef3f9; color: var(--navy); }
+}
+
+[data-design="b"] .hero {
+  background: linear-gradient(180deg, #f4f7fb 0%, #ffffff 100%);
+  color: var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+[data-design="b"] .eyebrow { color: var(--accent); }
+[data-design="b"] .hero h1 { color: var(--navy); }
+[data-design="b"] .lead { color: #34475c; opacity: 1; }
+[data-design="b"] .hero .btn-ghost, [data-design="b"] .page-hero .btn-ghost { color: var(--navy); }
+[data-design="b"] .hero .btn-ghost:hover, [data-design="b"] .page-hero .btn-ghost:hover { background: #eef3f9; }
+[data-design="b"] .hero-points { background: #fff; border-color: var(--line); box-shadow: 0 10px 30px rgba(11, 34, 57, 0.06); border-radius: 6px; }
+[data-design="b"] .hero-points span { color: var(--muted); }
+
+[data-design="b"] .page-hero { background: var(--bg-alt); color: var(--ink); border-bottom: 1px solid var(--line); }
+[data-design="b"] .page-hero h1 { color: var(--navy); }
+[data-design="b"] .page-hero a { color: var(--link); }
+[data-design="b"] .page-hero .meta, [data-design="b"] .crumbs { color: var(--muted); }
+[data-design="b"] .crumbs a { color: var(--link); }
+
+[data-design="b"] .service-card, [data-design="b"] .post-card, [data-design="b"] .testimonial,
+[data-design="b"] .price-card, [data-design="b"] .location, [data-design="b"] .side-card { border-radius: 6px; }
+[data-design="b"] .service-card { border-top: 3px solid var(--accent); }
+[data-design="b"] .callout { background: #eef4fb; }
+[data-design="b"] .cta .btn-accent { background: #fff; color: var(--navy); }
+[data-design="b"] .cta .btn-accent:hover { background: #e8eef6; }
+
+/* ---------------- C: Τεχνολογικό σκούρο ---------------- */
+[data-design="c"] {
+  --navy: #0a0f16;
+  --navy-2: #0d141d;
+  --ink: #e4ebf2;
+  --muted: #94a3b4;
+  --line: #1e2a38;
+  --bg: #0a0f16;
+  --bg-alt: #0d141d;
+  --card: #101924;
+  --accent: #2dd4bf;
+  --accent-ink: #032420;
+  --link: #5eead4;
+  --mono: ui-monospace, "SFMono-Regular", "Cascadia Mono", "Roboto Mono", Menlo, Consolas, monospace;
+}
+[data-design="c"] body { background: var(--bg); }
+[data-design="c"] .btn-accent:hover { background: #5eead4; }
+[data-design="c"] .eyebrow { font-family: var(--mono); letter-spacing: 0.08em; }
+
+[data-design="c"] .site-header { background: rgba(10, 15, 22, 0.92); backdrop-filter: blur(8px); box-shadow: 0 1px 0 var(--line); }
+[data-design="c"] .sub { background: var(--card); border: 1px solid var(--line); }
+[data-design="c"] .sub a { color: var(--ink); }
+[data-design="c"] .sub a:hover, [data-design="c"] .sub a[aria-current="page"] { background: #16212e; color: #fff; }
+
+[data-design="c"] .hero {
+  background:
+    radial-gradient(900px 420px at 80% 0%, rgba(45, 212, 191, 0.16) 0%, transparent 65%),
+    linear-gradient(rgba(148, 163, 180, 0.06) 1px, transparent 1px) 0 0 / 40px 40px,
+    linear-gradient(90deg, rgba(148, 163, 180, 0.06) 1px, transparent 1px) 0 0 / 40px 40px,
+    var(--bg);
+}
+[data-design="c"] .hero-points { background: rgba(16, 25, 36, 0.85); border-color: var(--line); }
+[data-design="c"] .hero-points span { color: var(--muted); }
+[data-design="c"] .page-hero { background: var(--bg-alt); border-bottom: 1px solid var(--line); }
+
+[data-design="c"] .service-card, [data-design="c"] .post-card, [data-design="c"] .testimonial,
+[data-design="c"] .price-card, [data-design="c"] .location, [data-design="c"] .side-card {
+  background: var(--card); border-color: var(--line); color: var(--ink);
+}
+[data-design="c"] .service-card:hover { border-color: rgba(45, 212, 191, 0.6); box-shadow: 0 0 0 1px rgba(45, 212, 191, 0.25), 0 12px 30px rgba(0, 0, 0, 0.35); }
+[data-design="c"] .service-card svg { color: var(--accent); }
+[data-design="c"] .section-alt { background: var(--bg-alt); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+[data-design="c"] .price { color: #fff; }
+[data-design="c"] .price-free { color: var(--accent); }
+[data-design="c"] .checks li::before { border-color: var(--accent); }
+[data-design="c"] .callout { background: rgba(45, 212, 191, 0.08); color: var(--ink); }
+[data-design="c"] .cta { background: var(--bg-alt); border-top: 1px solid var(--line); }
+[data-design="c"] .site-footer { background: #070b10; border-top: 1px solid var(--line); }
+[data-design="c"] .map { filter: invert(90%) hue-rotate(180deg) saturate(0.6); }
+[data-design="c"] .post-card img, [data-design="c"] .who img { background: #16212e; }
