@@ -96,6 +96,7 @@ p { margin: 0 0 1em; }
 .page-hero { background: var(--navy); color: #fff; padding: 40px 0 44px; }
 .page-hero .lead { margin-bottom: 0; }
 .page-hero a { color: #fff; }
+.page-hero .btn-accent { color: var(--accent-ink); }
 .page-hero .meta { color: #c7d5e4; margin: 0; }
 .crumbs { display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.88rem; color: #a9bccf; margin-bottom: 14px; }
 .crumbs a { color: #c7d5e4; }
