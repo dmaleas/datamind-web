@@ -51,9 +51,39 @@ content:
         options: { format: markdown }
 
   - name: services
-    label: Υπηρεσίες
+    label: Υπηρεσίες (Ελληνικά)
     type: collection
     path: src/content/services
+    filename: "{fields.slug}.md"
+    view:
+      primary: title
+      fields: [cardTitle, order]
+      sort: [order]
+      default: { sort: order, order: asc }
+    fields:
+      - { name: title, label: Τίτλος σελίδας (H1), type: string, required: true }
+      - { name: slug, label: Διεύθυνση (URL) — μόνο για νέες υπηρεσίες, type: string, pattern: "^[a-z0-9-_]+$" }
+      - { name: seoTitle, label: Τίτλος για Google, type: string, required: true }
+      - { name: description, label: Περιγραφή για Google, type: text, required: true, options: { maxlength: 170 } }
+      - { name: cardTitle, label: Σύντομο όνομα (μενού και κάρτες), type: string, required: true }
+      - { name: cardText, label: Μία γραμμή για την κάρτα στην αρχική, type: string, required: true }
+      - { name: intro, label: Εισαγωγή (κάτω από τον τίτλο), type: text, required: true }
+      - { name: order, label: Σειρά εμφάνισης, type: number, required: true }
+      - name: pricing
+        label: Πίνακας τιμών
+        type: select
+        options:
+          values:
+            - { value: hdd, label: Σκληροί δίσκοι }
+            - { value: ssd, label: SSD }
+            - { value: usb, label: USB }
+            - { value: sd, label: SD / microSD }
+      - { name: body, label: Κείμενο, type: rich-text, options: { format: markdown } }
+
+  - name: services_en
+    label: Υπηρεσίες (English)
+    type: collection
+    path: src/content/services-en
     filename: "{fields.slug}.md"
     view:
       primary: title

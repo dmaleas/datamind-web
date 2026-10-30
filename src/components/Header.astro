@@ -1,12 +1,13 @@
 ---
-import { getCollection } from 'astro:content';
 import site from '../data/site.json';
-import { alternateOf, nav, servicesEn, ui, type Lang } from '../i18n';
+import Logo from './Logo.astro';
+import { alternateOf, nav, ui, type Lang } from '../i18n';
+import { getServices } from '../lib/services';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = ui[lang];
-const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const services = await getServices(lang);
 const alt = alternateOf(Astro.url.pathname);
 const switchHref = lang === 'el' ? alt.en ?? '/en/' : alt.el ?? '/';
 const homeHref = lang === 'el' ? '/' : '/en/';
@@ -16,8 +17,7 @@ const current = Astro.url.pathname;
 <header class="site-header">
   <div class="wrap bar">
     <a class="brand" href={homeHref} aria-label="Datamind">
-      <img src="/logo.svg" alt="" width="36" height="36" />
-      <span class="brand-name">DATAMIND</span>
+      <Logo size={38} />
     </a>
 
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
@@ -32,11 +32,9 @@ const current = Astro.url.pathname;
             <li class="has-sub">
               <a href={item.href}>{item.label}</a>
               <ul class="sub">
-                {services.map((s) => {
-                  const en = servicesEn[s.id];
-                  const href = lang === 'en' && en?.href ? en.href : `/${s.id}/`;
-                  return <li><a href={href} aria-current={current === href ? 'page' : undefined}>{lang === 'en' ? en?.title : s.data.cardTitle}</a></li>;
-                })}
+                {services.map(({ entry, href }) => (
+                  <li><a href={href} aria-current={current === href ? 'page' : undefined}>{entry.data.cardTitle}</a></li>
+                ))}
               </ul>
             </li>
           ) : (

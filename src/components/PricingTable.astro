@@ -13,7 +13,7 @@ const t = ui[lang];
   <section class="pricing-group" aria-labelledby={`price-${g.id}`}>
     {showTitle && (
       <h2 id={`price-${g.id}`}>
-        {en ? g.titleEn : <a href={`/${g.service}/`}>{g.title}</a>}
+        <a href={en ? `/en/${g.serviceEn}/` : `/${g.service}/`}>{en ? g.titleEn : g.title}</a>
       </h2>
     )}
     {!showTitle && <h2 id={`price-${g.id}`}>{t.pricingHeading}</h2>}
@@ -21,7 +21,7 @@ const t = ui[lang];
       {g.items.map((it) => (
         <div class="price-card">
           <h3>{en ? it.nameEn : it.name}</h3>
-          <p class="price">{it.price}<span>{en ? '+ VAT' : '+ ΦΠΑ'}</span></p>
+          <p class="price">{it.price}<span>{t.vat}</span></p>
           <ul>
             {(en ? it.examplesEn : it.examples).map((e) => <li>{e}</li>)}
           </ul>

@@ -1,0 +1,55 @@
+---
+import { render, type CollectionEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHero from '../PageHero.astro';
+import PricingTable from '../PricingTable.astro';
+import ServiceGrid from '../ServiceGrid.astro';
+import ContactCta from '../ContactCta.astro';
+import site from '../../data/site.json';
+import { ui, type Lang } from '../../i18n';
+import { breadcrumbs, service } from '../../lib/schema';
+
+interface Props { entry: CollectionEntry<'services'> | CollectionEntry<'servicesEn'>; lang: Lang }
+const { entry, lang } = Astro.props;
+const { Content } = await render(entry);
+const t = ui[lang];
+const d = entry.data;
+const url = Astro.url.pathname;
+const home = lang === 'el' ? '/' : '/en/';
+const crumbs = [
+  { name: t.home, url: home },
+  { name: t.services, url: `${home}#services` },
+  { name: d.cardTitle, url },
+];
+---
+
+<Base title={d.seoTitle} description={d.description} lang={lang} schema={[breadcrumbs(crumbs), service(d.title, d.description, url, lang)]}>
+  <PageHero title={d.title} intro={d.intro} crumbs={crumbs}>
+    <div class="hero-actions">
+      <a class="btn btn-accent btn-lg" href={`tel:${site.phoneIntl}`}>{t.phoneLabel} {site.phone}</a>
+      <a class="btn btn-ghost btn-lg" href={lang === 'el' ? '/diadikasia/' : '/en/diadikasia_anaktisis/'}>{t.processCta}</a>
+    </div>
+  </PageHero>
+  <div class="wrap section service-layout">
+    <article class="prose">
+      <Content />
+      <p class="callout">{t.noDataNoCharge}</p>
+    </article>
+    <aside class="side-card">
+      <h2>{t.sideHeading}</h2>
+      <ul class="checks">
+        {t.sidePoints.map((p) => <li>{p}</li>)}
+      </ul>
+      <a class="btn btn-accent" href={`tel:${site.phoneIntl}`}>{site.phone}</a>
+      <a class="text-link" href={`mailto:${site.email}`}>{site.email}</a>
+    </aside>
+  </div>
+  {d.pricing && <div class="wrap section-tight"><PricingTable group={d.pricing} lang={lang} /></div>}
+  <section class="section section-alt">
+    <div class="wrap">
+      <div class="section-head"><h2>{t.otherServices}</h2></div>
+      <ServiceGrid lang={lang} exclude={entry.id} />
+    </div>
+  </section>
+  <ContactCta lang={lang} />
+</Base>

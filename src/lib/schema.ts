@@ -10,7 +10,7 @@ export function organization(lang: Lang) {
     '@id': `${site.url}/#organization`,
     name: site.name,
     url: site.url,
-    logo: `${site.url}/logo.svg`,
+    logo: `${site.url}/logo.png`,
     email: site.email,
     telephone: site.phoneIntl,
     foundingDate: String(site.foundingYear),
@@ -50,7 +50,7 @@ export function breadcrumbs(items: { name: string; url: string }[]) {
   };
 }
 
-export function service(name: string, description: string, url: string) {
+export function service(name: string, description: string, url: string, lang: Lang = 'el') {
   return {
     '@context': 'https://schema.org',
     '@type': 'Service',
@@ -59,7 +59,8 @@ export function service(name: string, description: string, url: string) {
     serviceType: 'Data recovery',
     url: new URL(url, site.url).href,
     provider: { '@id': `${site.url}/#organization` },
-    areaServed: { '@type': 'Country', name: 'Ελλάδα' },
+    inLanguage: lang === 'el' ? 'el-GR' : 'en',
+    areaServed: { '@type': 'Country', name: lang === 'el' ? 'Ελλάδα' : 'Greece' },
   };
 }
 

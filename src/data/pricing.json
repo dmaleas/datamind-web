@@ -1,17 +1,66 @@
 {
-  "vatNote": "Στις τιμές δεν περιλαμβάνεται ΦΠΑ 24%. Η μεταφορά, η διάγνωση και τα ανταλλακτικά περιλαμβάνονται.",
-  "vatNoteEn": "Prices exclude 24% VAT. Shipping, diagnosis and donor parts are included.",
+  "vatNote": "Οι τιμές δεν περιλαμβάνουν ΦΠΑ 24%. Η μεταφορά, η διάγνωση και τα ανταλλακτικά περιλαμβάνονται στην τιμή.",
+  "vatNoteEn": "Prices are exclusive of 24% VAT. Shipping, diagnosis and donor parts are included.",
   "groups": [
     {
       "id": "hdd",
       "title": "Σκληροί δίσκοι",
       "titleEn": "Hard disks (HDD)",
       "service": "sklhroi-diskoi",
+      "serviceEn": "hard-disk-data-recovery",
       "items": [
-        { "name": "Λογικά προβλήματα", "nameEn": "Logical problems", "price": "70–150€", "examples": ["Απώλεια partition", "Format / διαγραφή αρχείων"], "examplesEn": ["Lost partition", "Format / deleted files"] },
-        { "name": "Ηλεκτρονικά προβλήματα", "nameEn": "Electronics problems", "price": "80–170€", "examples": ["Καμένη πλακέτα", "Προβληματική ROM"], "examplesEn": ["Burned PCB", "Faulty ROM"] },
-        { "name": "Προβλήματα firmware", "nameEn": "Firmware problems", "price": "180–270€", "examples": ["Δεν αναγνωρίζεται", "Αργή μεταφορά αρχείων"], "examplesEn": ["Not recognised by the OS", "Very slow access"] },
-        { "name": "Μηχανικά προβλήματα", "nameEn": "Mechanical problems", "price": "250–550€", "examples": ["Κατεστραμμένες κεφαλές", "Προβληματικό μοτέρ"], "examplesEn": ["Damaged heads", "Faulty motor"] }
+        {
+          "name": "Λογικά προβλήματα",
+          "nameEn": "Logical problems",
+          "price": "70–150€",
+          "examples": [
+            "Απώλεια partition",
+            "Format / διαγραφή αρχείων"
+          ],
+          "examplesEn": [
+            "Lost partition",
+            "Format / deleted files"
+          ]
+        },
+        {
+          "name": "Ηλεκτρονικά προβλήματα",
+          "nameEn": "Electronics problems",
+          "price": "80–170€",
+          "examples": [
+            "Καμένη πλακέτα",
+            "Προβληματική ROM"
+          ],
+          "examplesEn": [
+            "Burned PCB",
+            "Faulty ROM"
+          ]
+        },
+        {
+          "name": "Προβλήματα firmware",
+          "nameEn": "Firmware problems",
+          "price": "180–270€",
+          "examples": [
+            "Δεν αναγνωρίζεται",
+            "Αργή μεταφορά αρχείων"
+          ],
+          "examplesEn": [
+            "Not recognised by the OS",
+            "Very slow access"
+          ]
+        },
+        {
+          "name": "Μηχανικά προβλήματα",
+          "nameEn": "Mechanical problems",
+          "price": "250–550€",
+          "examples": [
+            "Κατεστραμμένες κεφαλές",
+            "Προβληματικό μοτέρ"
+          ],
+          "examplesEn": [
+            "Damaged heads",
+            "Faulty motor"
+          ]
+        }
       ]
     },
     {
@@ -19,9 +68,34 @@
       "title": "Δίσκοι SSD",
       "titleEn": "SSD disks",
       "service": "ssd_disk",
+      "serviceEn": "ssd-data-recovery",
       "items": [
-        { "name": "Προβλήματα λογικού", "nameEn": "Logical problems", "price": "80–200€", "examples": ["Διαγραφή αρχείων", "Απώλεια partition"], "examplesEn": ["Deleted files / format", "Lost partition"] },
-        { "name": "Προβλήματα υλικού", "nameEn": "Hardware problems", "price": "350–500€", "examples": ["Φυσική βλάβη", "Δεν αναγνωρίζεται από το BIOS"], "examplesEn": ["Physical damage", "Not recognised by BIOS"] }
+        {
+          "name": "Προβλήματα λογικού",
+          "nameEn": "Logical problems",
+          "price": "80–200€",
+          "examples": [
+            "Διαγραφή αρχείων",
+            "Απώλεια partition"
+          ],
+          "examplesEn": [
+            "Deleted files / format",
+            "Lost partition"
+          ]
+        },
+        {
+          "name": "Προβλήματα υλικού",
+          "nameEn": "Hardware problems",
+          "price": "350–500€",
+          "examples": [
+            "Φυσική βλάβη",
+            "Δεν αναγνωρίζεται από το BIOS"
+          ],
+          "examplesEn": [
+            "Physical damage",
+            "Not recognised by BIOS"
+          ]
+        }
       ]
     },
     {
@@ -29,9 +103,34 @@
       "title": "USB flash disks",
       "titleEn": "USB flash disks",
       "service": "ananktisi-dedomenvn-apo-usb_sticks",
+      "serviceEn": "usb-flash-data-recovery",
       "items": [
-        { "name": "Προβλήματα λογικού", "nameEn": "Logical problems", "price": "80–180€", "examples": ["Διαγραφή αρχείων", "Διαμόρφωση (format)"], "examplesEn": ["Deleted files", "Format"] },
-        { "name": "Προβλήματα υλικού", "nameEn": "Hardware problems", "price": "150–500€", "examples": ["Λύγισμα / σπάσιμο", "Δεν αναγνωρίζεται"], "examplesEn": ["Bent / broken", "Not recognised by the OS"] }
+        {
+          "name": "Προβλήματα λογικού",
+          "nameEn": "Logical problems",
+          "price": "80–180€",
+          "examples": [
+            "Διαγραφή αρχείων",
+            "Διαμόρφωση (format)"
+          ],
+          "examplesEn": [
+            "Deleted files",
+            "Format"
+          ]
+        },
+        {
+          "name": "Προβλήματα υλικού",
+          "nameEn": "Hardware problems",
+          "price": "150–500€",
+          "examples": [
+            "Λύγισμα / σπάσιμο",
+            "Δεν αναγνωρίζεται"
+          ],
+          "examplesEn": [
+            "Bent / broken",
+            "Not recognised by the OS"
+          ]
+        }
       ]
     },
     {
@@ -39,9 +138,34 @@
       "title": "SD / microSD κάρτες",
       "titleEn": "SD / microSD cards",
       "service": "ananktisi-dedomenvn-apo-sd_cards",
+      "serviceEn": "sd-card-data-recovery",
       "items": [
-        { "name": "Προβλήματα λογικού", "nameEn": "Logical problems", "price": "80–180€", "examples": ["Διαγραφή αρχείων", "Διαμόρφωση (format)"], "examplesEn": ["Deleted files", "Format"] },
-        { "name": "Προβλήματα υλικού", "nameEn": "Hardware problems", "price": "150–500€", "examples": ["Λύγισμα / σπάσιμο", "Δεν αναγνωρίζεται"], "examplesEn": ["Bent / broken", "Not recognised"] }
+        {
+          "name": "Προβλήματα λογικού",
+          "nameEn": "Logical problems",
+          "price": "80–180€",
+          "examples": [
+            "Διαγραφή αρχείων",
+            "Διαμόρφωση (format)"
+          ],
+          "examplesEn": [
+            "Deleted files",
+            "Format"
+          ]
+        },
+        {
+          "name": "Προβλήματα υλικού",
+          "nameEn": "Hardware problems",
+          "price": "150–500€",
+          "examples": [
+            "Λύγισμα / σπάσιμο",
+            "Δεν αναγνωρίζεται"
+          ],
+          "examplesEn": [
+            "Bent / broken",
+            "Not recognised"
+          ]
+        }
       ]
     }
   ]

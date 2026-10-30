@@ -12,7 +12,8 @@ Pages CMS / Claude / GitHub edit  ──►  GitHub (main)  ──►  Cloudflar
 
 | What | File |
 |---|---|
-| Service pages (HDD, SSD, RAID…) | `src/content/services/*.md` — file name = URL (`raid.md` → `/raid/`) |
+| Service pages, Greek | `src/content/services/*.md` — file name = URL (`raid.md` → `/raid/`) |
+| Service pages, English | `src/content/services-en/*.md` — file name = URL under `/en/` |
 | Blog posts | `src/content/blog/*.md` — file name = URL |
 | Company, process pages (GR + EN) | `src/content/pages/el/`, `src/content/pages/en/` |
 | Phone, email, addresses, hours | `src/data/site.json` |
@@ -21,6 +22,8 @@ Pages CMS / Claude / GitHub edit  ──►  GitHub (main)  ──►  Cloudflar
 | Homepage texts (GR + EN) | `src/data/home.json` |
 | Redirects from old URLs | `public/_redirects` |
 | Images | `public/images/` |
+| Logo | `src/components/Logo.astro` (vector), `public/logo.svg`, `public/favicon.svg` |
+| Greek ↔ English page pairs (language switch) | `src/i18n.ts` → `alternates` |
 
 All URLs are the same as on the old WordPress site, so Google rankings carry over. `npm run check-urls` proves it after a build.
 

@@ -1,13 +1,14 @@
 ---
-import { getCollection } from 'astro:content';
 import site from '../data/site.json';
-import { nav, servicesEn, ui, type Lang } from '../i18n';
+import Logo from './Logo.astro';
+import { nav, ui, type Lang } from '../i18n';
+import { getServices } from '../lib/services';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = ui[lang];
 const en = lang === 'en';
-const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const services = await getServices(lang);
 const year = new Date().getFullYear();
 ---
 
@@ -15,8 +16,7 @@ const year = new Date().getFullYear();
   <div class="wrap footer-grid">
     <div>
       <a class="brand brand-light" href={en ? '/en/' : '/'}>
-        <img src="/logo.svg" alt="" width="32" height="32" />
-        <span class="brand-name">DATAMIND</span>
+        <Logo size={34} />
       </a>
       <p class="muted">{t.footerAbout}</p>
       <p>
@@ -28,9 +28,7 @@ const year = new Date().getFullYear();
     <div>
       <h2 class="footer-h">{t.services}</h2>
       <ul class="footer-list">
-        {services.map((s) => (
-          <li><a href={en && servicesEn[s.id]?.href ? servicesEn[s.id].href : `/${s.id}/`}>{en ? servicesEn[s.id]?.title : s.data.cardTitle}</a></li>
-        ))}
+        {services.map(({ entry, href }) => <li><a href={href}>{entry.data.cardTitle}</a></li>)}
       </ul>
     </div>
 

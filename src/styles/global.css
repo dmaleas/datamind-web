@@ -45,10 +45,12 @@ p { margin: 0 0 1em; }
 .site-header { position: sticky; top: 0; z-index: 50; background: var(--navy); color: #fff; box-shadow: 0 1px 0 rgba(255,255,255,0.06); }
 .bar { display: flex; align-items: center; gap: 20px; min-height: 68px; }
 .brand { display: inline-flex; align-items: center; gap: 10px; color: #fff; text-decoration: none; }
-.brand-name { font-weight: 800; letter-spacing: 0.14em; font-size: 1.05rem; }
+.logo { display: inline-flex; align-items: center; gap: 12px; }
+.logo-mark { flex: none; display: block; }
+.logo-word { font-weight: 400; letter-spacing: 0.3em; font-size: 1.02rem; margin-right: -0.3em; }
 .site-nav { margin-left: auto; }
 .nav-list { list-style: none; display: flex; align-items: center; gap: 2px; margin: 0; padding: 0; }
-.nav-list a { display: block; padding: 8px 12px; color: #dbe6f2; text-decoration: none; border-radius: 6px; font-size: 0.95rem; font-weight: 550; }
+.nav-list a { display: block; white-space: nowrap; padding: 8px 11px; color: #dbe6f2; text-decoration: none; border-radius: 6px; font-size: 0.95rem; font-weight: 550; }
 .nav-list a:hover, .nav-list a[aria-current="page"] { color: #fff; background: rgba(255,255,255,0.08); }
 .has-sub { position: relative; }
 .sub { list-style: none; margin: 0; padding: 8px; position: absolute; top: 100%; left: 0; min-width: 230px; background: #fff; border-radius: var(--radius); box-shadow: 0 12px 32px rgba(11,34,57,0.18); display: none; }
@@ -209,3 +211,6 @@ p { margin: 0 0 1em; }
   .testimonials .testimonial:nth-child(n+4) { display: none; }
   .hero-actions .btn { flex: 1 1 100%; justify-content: center; }
 }
+
+/* .section sets vertical padding only; keep the side gutter when combined with .wrap */
+.wrap.section, .wrap.section-tight { padding-left: 20px; padding-right: 20px; }

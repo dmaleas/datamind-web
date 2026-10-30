@@ -2,10 +2,9 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
-// Service pages (hard disks, SSD, RAID...). The file name is the URL: raid.md -> /raid/
-const services = defineCollection({
-  loader: glob({ pattern: '*.md', base: './src/content/services' }),
-  schema: z.object({
+// Service pages (hard disks, SSD, RAID...). The file name is the URL:
+// services/raid.md -> /raid/   and   services-en/data-recovery-raid.md -> /en/data-recovery-raid/
+const serviceSchema = z.object({
     title: z.string(), // H1 on the page
     seoTitle: z.string(), // <title> shown in Google
     description: z.string(), // meta description shown in Google
@@ -16,8 +15,9 @@ const services = defineCollection({
     pricing: z.string().optional(), // id of a group in src/data/pricing.json
     slug: z.string().optional(), // only used by Pages CMS to name new files
     image: z.string().optional(),
-  }),
 });
+const services = defineCollection({ loader: glob({ pattern: '*.md', base: './src/content/services' }), schema: serviceSchema });
+const servicesEn = defineCollection({ loader: glob({ pattern: '*.md', base: './src/content/services-en' }), schema: serviceSchema });
 
 // Blog posts. The file name is the URL: ssd-defragmentation.md -> /ssd-defragmentation/
 const blog = defineCollection({
@@ -42,4 +42,4 @@ const pages = defineCollection({
   }),
 });
 
-export const collections = { services, blog, pages };
+export const collections = { services, servicesEn, blog, pages };

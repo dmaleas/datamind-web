@@ -3,7 +3,7 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import site from '../data/site.json';
-import { alternateOf, type Lang } from '../i18n';
+import { alternateOf, ui, type Lang } from '../i18n';
 import { organization } from '../lib/schema';
 
 interface Props {
@@ -46,6 +46,8 @@ const jsonLd = [organization(lang), ...schema];
     <meta name="twitter:card" content="summary_large_image" />
 
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="theme-color" content="#0b2239" />
 
@@ -64,7 +66,7 @@ const jsonLd = [organization(lang), ...schema];
     )}
   </head>
   <body>
-    <a class="skip" href="#main">{lang === 'el' ? 'Μετάβαση στο περιεχόμενο' : 'Skip to content'}</a>
+    <a class="skip" href="#main">{ui[lang].skip}</a>
     <Header lang={lang} />
     <main id="main">
       <slot />

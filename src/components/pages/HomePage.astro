@@ -5,7 +5,7 @@ import Testimonials from '../Testimonials.astro';
 import home from '../../data/home.json';
 import site from '../../data/site.json';
 import { getCollection } from 'astro:content';
-import type { Lang } from '../../i18n';
+import { ui, type Lang } from '../../i18n';
 
 interface Props { lang: Lang }
 const { lang } = Astro.props;
@@ -64,8 +64,8 @@ const fmt = new Intl.DateTimeFormat('el-GR', { dateStyle: 'medium' });
     <section class="section">
       <div class="wrap">
         <div class="section-head">
-          <h2>Πρόσφατα άρθρα</h2>
-          <p><a href="/blog-anakthsh-dedomenwn/">Όλα τα άρθρα →</a></p>
+          <h2>{ui.el.latestPosts}</h2>
+          <p><a href="/blog-anakthsh-dedomenwn/">{ui.el.backToBlog} →</a></p>
         </div>
         <ul class="post-grid">
           {posts.map((p) => (

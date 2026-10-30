@@ -17,11 +17,11 @@ const crumbs = [
 ];
 const title = en ? 'Data recovery prices | Datamind' : 'Κόστος ανάκτησης δεδομένων | Τιμές | Datamind';
 const description = en
-  ? 'Transparent data recovery prices for hard disks, SSDs, USB sticks and SD cards. Shipping, diagnosis and parts included. No data, no charge.'
+  ? 'Data recovery prices for hard disks, SSDs, USB flash drives and SD cards. Shipping, diagnosis and donor parts included. No data, no charge.'
   : 'Τιμές ανάκτησης δεδομένων από σκληρούς δίσκους, SSD, USB και κάρτες SD. Η μεταφορά, η διάγνωση και τα ανταλλακτικά περιλαμβάνονται. Χωρίς κρυφές χρεώσεις.';
 const intro = en
-  ? 'High-quality data recovery at fair prices. Shipping, diagnosis and donor parts are included, so there are no hidden or extra charges.'
-  : 'Υψηλής ποιότητας ανάκτηση δεδομένων με λογικό κόστος. Η μεταφορά, η διάγνωση και τα ανταλλακτικά περιλαμβάνονται, γι\' αυτό δεν υπάρχουν κρυφές ή επιπλέον χρεώσεις.';
+  ? 'Datamind provides high-quality data recovery services at reasonable cost. Prices include shipping, diagnosis and donor parts; no hidden or additional charges apply.'
+  : 'Η Datamind παρέχει υψηλής ποιότητας υπηρεσίες ανάκτησης δεδομένων με εύλογο κόστος. Οι τιμές περιλαμβάνουν τη μεταφορά, τη διάγνωση και τα ανταλλακτικά, χωρίς κρυφές ή πρόσθετες χρεώσεις.';
 ---
 
 <Base title={title} description={description} lang={lang} schema={[breadcrumbs(crumbs)]}>
@@ -31,8 +31,8 @@ const intro = en
     <p class="note">{en ? pricing.vatNoteEn : pricing.vatNote} {t.noDataNoCharge}</p>
     <p class="note">
       {en
-        ? 'RAID, server, virtual machine, tape and ransomware cases are priced after diagnosis.'
-        : 'Οι περιπτώσεις RAID, servers, εικονικών μηχανών, tapes και ransomware κοστολογούνται μετά τη διάγνωση.'}
+        ? 'RAID arrays, servers, virtual machines, tapes and ransomware cases are quoted following diagnosis.'
+        : 'Για συστοιχίες RAID, servers, εικονικές μηχανές, tapes και περιπτώσεις ransomware, η κοστολόγηση πραγματοποιείται μετά τη διάγνωση.'}
     </p>
   </div>
   <ContactCta lang={lang} />
