@@ -1,10 +1,8 @@
 ---
 import '../styles/global.css';
-import '../styles/designs.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import site from '../data/site.json';
-import design from '../data/design.json';
 import { alternateOf, ui, type Lang } from '../i18n';
 import { organization } from '../lib/schema';
 
@@ -26,7 +24,7 @@ const jsonLd = [organization(lang), ...schema];
 ---
 
 <!doctype html>
-<html lang={lang === 'el' ? 'el' : 'en'} data-design={design.design}>
+<html lang={lang === 'el' ? 'el' : 'en'}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
