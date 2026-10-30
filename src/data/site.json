@@ -15,8 +15,8 @@
   "ga4Id": "",
   "locations": [
     {
-      "name": "Datamind Αθήνα",
-      "nameEn": "Datamind Athens",
+      "name": "Αθήνα",
+      "nameEn": "Athens",
       "street": "Σπύρου Τρικούπη 20",
       "streetEn": "Spirou Trikoupi 20",
       "city": "Αθήνα",
@@ -34,11 +34,12 @@
           "number": "211 800 1320",
           "intl": "+302118001320"
         }
-      ]
+      ],
+      "mapQuery": "Σπύρου Τρικούπη 20, Αθήνα 106 83"
     },
     {
-      "name": "Datamind Πάτρα (έδρα)",
-      "nameEn": "Datamind Patras (headquarters)",
+      "name": "Πάτρα",
+      "nameEn": "Patras",
       "street": "Επιστημονικό Πάρκο Πατρών",
       "streetEn": "Patras Science Park",
       "city": "Ρίο Πατρών",
@@ -56,7 +57,8 @@
           "number": "211 800 1320",
           "intl": "+302118001320"
         }
-      ]
+      ],
+      "mapQuery": "Patras Science Park, Ρίο 265 04"
     }
   ]
 }

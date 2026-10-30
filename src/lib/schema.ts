@@ -19,7 +19,7 @@ export function organization(lang: Lang) {
     department: site.locations.map((l, i) => ({
       '@type': 'ProfessionalService',
       '@id': `${site.url}/#location-${i + 1}`,
-      name: en ? l.nameEn : l.name,
+      name: `Datamind ${en ? l.nameEn : l.name}`,
       description: en ? 'Data recovery services' : 'Υπηρεσίες ανάκτησης δεδομένων',
       url: site.url,
       telephone: l.phones.map((ph) => ph.intl),

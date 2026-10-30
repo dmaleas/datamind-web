@@ -151,6 +151,7 @@ content:
           - { name: city, label: Πόλη, type: string }
           - { name: cityEn, label: Πόλη (EN), type: string }
           - { name: postalCode, label: ΤΚ, type: string }
+          - { name: mapQuery, label: Διεύθυνση για τον χάρτη Google, type: string }
           - { name: hours, label: Ωράριο, type: string }
           - { name: hoursEn, label: Ωράριο (EN), type: string }
           - { name: openingHours, label: "Ωράριο για Google (π.χ. Mo-Fr 09:00-17:00)", type: string, list: true }
