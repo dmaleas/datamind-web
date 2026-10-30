@@ -133,8 +133,6 @@ content:
       - { name: url, label: Διεύθυνση site, type: string }
       - { name: phone, label: Τηλέφωνο (όπως εμφανίζεται), type: string }
       - { name: phoneIntl, label: Τηλέφωνο διεθνές (+30...), type: string }
-      - { name: mobile, label: Κινητό (όπως εμφανίζεται), type: string }
-      - { name: mobileIntl, label: Κινητό διεθνές (+30...), type: string }
       - { name: email, label: Email, type: string }
       - { name: foundingYear, label: Έτος ίδρυσης, type: number }
       - { name: certifications, label: Πιστοποιήσεις, type: string, list: true }

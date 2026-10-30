@@ -6,7 +6,7 @@ description: The data recovery process at Datamind - initial contact, free couri
 
 ## 1. Contact
 
-Contact us by telephone on **+30 211 800 1320** (call centre), **+30 261 110 4059** (Patras office) or **+30 697 410 7372** (mobile), or by email at **info@datamind.gr**.
+Contact us by telephone on **+30 211 800 1320** or by email at **info@datamind.gr**.
 
 ## 2. Shipping
 

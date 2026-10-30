@@ -4,8 +4,6 @@
   "url": "https://www.datamind.gr",
   "phone": "211 800 1320",
   "phoneIntl": "+302118001320",
-  "mobile": "697 410 7372",
-  "mobileIntl": "+306974107372",
   "email": "info@datamind.gr",
   "foundingYear": 2010,
   "certifications": [
@@ -31,16 +29,10 @@
       ],
       "phones": [
         {
-          "label": "Τηλεφωνικό κέντρο",
-          "labelEn": "Call centre",
+          "label": "Τηλέφωνο",
+          "labelEn": "Telephone",
           "number": "211 800 1320",
           "intl": "+302118001320"
-        },
-        {
-          "label": "Κινητό",
-          "labelEn": "Mobile",
-          "number": "697 410 7372",
-          "intl": "+306974107372"
         }
       ]
     },
@@ -59,22 +51,10 @@
       ],
       "phones": [
         {
-          "label": "Τηλεφωνικό κέντρο",
-          "labelEn": "Call centre",
+          "label": "Τηλέφωνο",
+          "labelEn": "Telephone",
           "number": "211 800 1320",
           "intl": "+302118001320"
-        },
-        {
-          "label": "Σταθερό Πάτρας",
-          "labelEn": "Patras office",
-          "number": "261 110 4059",
-          "intl": "+302611104059"
-        },
-        {
-          "label": "Κινητό",
-          "labelEn": "Mobile",
-          "number": "697 410 7372",
-          "intl": "+306974107372"
         }
       ]
     }
