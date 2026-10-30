@@ -1,0 +1,74 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import site from '../data/site.json';
+import { alternateOf, type Lang } from '../i18n';
+import { organization } from '../lib/schema';
+
+interface Props {
+  title: string; // <title>, shown in Google results
+  description: string; // meta description, shown in Google results
+  lang?: Lang;
+  image?: string;
+  type?: 'website' | 'article';
+  schema?: object[]; // extra JSON-LD blocks
+  noindex?: boolean;
+}
+
+const { title, description, lang = 'el', image = '/og-image.png', type = 'website', schema = [], noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const alt = alternateOf(Astro.url.pathname);
+const ogImage = new URL(image, Astro.site).href;
+const jsonLd = [organization(lang), ...schema];
+---
+
+<!doctype html>
+<html lang={lang === 'el' ? 'el' : 'en'}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    {alt.el && <link rel="alternate" hreflang="el" href={new URL(alt.el, Astro.site).href} />}
+    {alt.en && <link rel="alternate" hreflang="en" href={new URL(alt.en, Astro.site).href} />}
+    {alt.el && <link rel="alternate" hreflang="x-default" href={new URL(alt.el, Astro.site).href} />}
+
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content={lang === 'el' ? 'el_GR' : 'en_US'} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="theme-color" content="#0b2239" />
+
+    {jsonLd.map((j) => <script type="application/ld+json" set:html={JSON.stringify(j)} />)}
+
+    {site.ga4Id && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${site.ga4Id}`}></script>
+        <script is:inline define:vars={{ id: site.ga4Id }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag() { dataLayer.push(arguments); }
+          gtag('js', new Date());
+          gtag('config', id);
+        </script>
+      </>
+    )}
+  </head>
+  <body>
+    <a class="skip" href="#main">{lang === 'el' ? 'Μετάβαση στο περιεχόμενο' : 'Skip to content'}</a>
+    <Header lang={lang} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+  </body>
+</html>

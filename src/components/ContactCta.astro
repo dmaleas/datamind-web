@@ -1,0 +1,21 @@
+---
+import site from '../data/site.json';
+import { ui, type Lang } from '../i18n';
+
+interface Props { lang?: Lang }
+const { lang = 'el' } = Astro.props;
+const t = ui[lang];
+---
+
+<section class="cta">
+  <div class="wrap cta-inner">
+    <div>
+      <h2>{t.ctaHeading}</h2>
+      <p>{t.ctaText}</p>
+    </div>
+    <div class="cta-actions">
+      <a class="btn btn-accent btn-lg" href={`tel:${site.phoneIntl}`}>{t.call} {site.phone}</a>
+      <a class="btn btn-ghost btn-lg" href={`mailto:${site.email}`}>{t.emailUs}</a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../PageHero.astro';
+import PricingTable from '../PricingTable.astro';
+import ContactCta from '../ContactCta.astro';
+import pricing from '../../data/pricing.json';
+import { ui, type Lang } from '../../i18n';
+import { breadcrumbs } from '../../lib/schema';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const en = lang === 'en';
+const t = ui[lang];
+const crumbs = [
+  { name: t.home, url: en ? '/en/' : '/' },
+  { name: t.pricingHeading, url: Astro.url.pathname },
+];
+const title = en ? 'Data recovery prices | Datamind' : 'Κόστος ανάκτησης δεδομένων | Τιμές | Datamind';
+const description = en
+  ? 'Transparent data recovery prices for hard disks, SSDs, USB sticks and SD cards. Shipping, diagnosis and parts included. No data, no charge.'
+  : 'Τιμές ανάκτησης δεδομένων από σκληρούς δίσκους, SSD, USB και κάρτες SD. Η μεταφορά, η διάγνωση και τα ανταλλακτικά περιλαμβάνονται. Χωρίς κρυφές χρεώσεις.';
+const intro = en
+  ? 'High-quality data recovery at fair prices. Shipping, diagnosis and donor parts are included, so there are no hidden or extra charges.'
+  : 'Υψηλής ποιότητας ανάκτηση δεδομένων με λογικό κόστος. Η μεταφορά, η διάγνωση και τα ανταλλακτικά περιλαμβάνονται, γι\' αυτό δεν υπάρχουν κρυφές ή επιπλέον χρεώσεις.';
+---
+
+<Base title={title} description={description} lang={lang} schema={[breadcrumbs(crumbs)]}>
+  <PageHero title={t.pricingHeading} intro={intro} crumbs={crumbs} />
+  <div class="wrap section">
+    {pricing.groups.map((g) => <PricingTable group={g.id} lang={lang} showTitle />)}
+    <p class="note">{en ? pricing.vatNoteEn : pricing.vatNote} {t.noDataNoCharge}</p>
+    <p class="note">
+      {en
+        ? 'RAID, server, virtual machine, tape and ransomware cases are priced after diagnosis.'
+        : 'Οι περιπτώσεις RAID, servers, εικονικών μηχανών, tapes και ransomware κοστολογούνται μετά τη διάγνωση.'}
+    </p>
+  </div>
+  <ContactCta lang={lang} />
+</Base>

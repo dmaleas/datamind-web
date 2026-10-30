@@ -1,0 +1,37 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactCta from '../components/ContactCta.astro';
+import { breadcrumbs } from '../lib/schema';
+
+const posts = (await getCollection('blog', (p) => !p.data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const fmt = new Intl.DateTimeFormat('el-GR', { dateStyle: 'medium' });
+const crumbs = [{ name: 'Αρχική', url: '/' }, { name: 'Ιστολόγιο', url: '/blog-anakthsh-dedomenwn/' }];
+---
+
+<Base
+  title="Ιστολόγιο ανάκτησης δεδομένων | Datamind"
+  description="Άρθρα, συμβουλές και πραγματικές περιπτώσεις ανάκτησης δεδομένων από σκληρούς δίσκους, SSD, RAID, κάρτες μνήμης και ransomware."
+  schema={[breadcrumbs(crumbs)]}
+>
+  <PageHero title="Ιστολόγιο" intro="Συμβουλές και πραγματικές περιπτώσεις από το εργαστήριό μας." crumbs={crumbs} />
+  <div class="wrap section">
+    <ul class="post-grid">
+      {posts.map((p) => (
+        <li>
+          <a class="post-card" href={`/${p.id}/`}>
+            {p.data.image && <img src={p.data.image} alt="" loading="lazy" width="400" height="225" />}
+            <div class="post-card-body">
+              <time datetime={p.data.date.toISOString()}>{fmt.format(p.data.date)}</time>
+              <h2>{p.data.title}</h2>
+              <p>{p.data.description}</p>
+            </div>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+  <ContactCta />
+</Base>

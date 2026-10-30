@@ -1,0 +1,99 @@
+---
+import Base from '../../layouts/Base.astro';
+import ServiceGrid from '../ServiceGrid.astro';
+import Testimonials from '../Testimonials.astro';
+import home from '../../data/home.json';
+import site from '../../data/site.json';
+import { getCollection } from 'astro:content';
+import type { Lang } from '../../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const h = home[lang];
+const en = lang === 'en';
+const processHref = en ? '/en/diadikasia_anaktisis/' : '/diadikasia/';
+const posts = en ? [] : (await getCollection('blog', (p) => !p.data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+const fmt = new Intl.DateTimeFormat('el-GR', { dateStyle: 'medium' });
+---
+
+<Base title={h.seoTitle} description={h.description} lang={lang}>
+  <section class="hero">
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">{h.eyebrow}</p>
+        <h1>{h.heading}</h1>
+        <p class="lead">{h.lead}</p>
+        <div class="hero-actions">
+          <a class="btn btn-accent btn-lg" href={`tel:${site.phoneIntl}`}>{h.ctaPrimary} {site.phone}</a>
+          <a class="btn btn-ghost btn-lg" href={processHref}>{h.ctaSecondary}</a>
+        </div>
+      </div>
+      <ul class="hero-points" aria-label={en ? 'Why Datamind' : 'Γιατί Datamind'}>
+        {h.features.map((f) => (
+          <li>
+            <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg>
+            <div><strong>{f.title}</strong><span>{f.text}</span></div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>{h.servicesHeading}</h2>
+        <p>{h.servicesLead}</p>
+      </div>
+      <ServiceGrid lang={lang} />
+    </div>
+  </section>
+
+  {!en && (
+    <section class="section section-alt">
+      <div class="wrap">
+        <div class="section-head"><h2>{h.testimonialsHeading}</h2></div>
+        <Testimonials limit={6} />
+      </div>
+    </section>
+  )}
+
+  {posts.length > 0 && (
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Πρόσφατα άρθρα</h2>
+          <p><a href="/blog-anakthsh-dedomenwn/">Όλα τα άρθρα →</a></p>
+        </div>
+        <ul class="post-grid">
+          {posts.map((p) => (
+            <li>
+              <a class="post-card" href={`/${p.id}/`}>
+                {p.data.image && <img src={p.data.image} alt="" loading="lazy" width="400" height="225" />}
+                <div class="post-card-body">
+                  <time datetime={p.data.date.toISOString()}>{fmt.format(p.data.date)}</time>
+                  <h3>{p.data.title}</h3>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  )}
+
+  <section class="cta">
+    <div class="wrap cta-inner">
+      <div>
+        <h2>{h.ctaHeading}</h2>
+        <p>{h.ctaText}</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-accent btn-lg" href={`tel:${site.phoneIntl}`}>{h.ctaPrimary} {site.phone}</a>
+        <a class="btn btn-ghost btn-lg" href={processHref}>{h.ctaSecondary}</a>
+      </div>
+    </div>
+  </section>
+</Base>

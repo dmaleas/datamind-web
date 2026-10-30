@@ -1,0 +1,15 @@
+# Old WordPress URLs -> new pages (301 = permanent, keeps Google rankings)
+/anaktisi-dedomenwn-apo-sklhro-disko/          /sklhroi-diskoi/   301
+/ananktisi-dedomenvn-apo-ssd_disk/             /ssd_disk/   301
+/ananktisi-dedomenvn-apo-raid/                 /raid/   301
+/diadikasia-anakthshs-dedomenwn/               /diadikasia/   301
+/epikoinwnia-anakthsh-dedomenwn/               /epikoinwnia/   301
+/author/*                                      /blog-anakthsh-dedomenwn/   301
+/category/*                                    /blog-anakthsh-dedomenwn/   301
+/tag/*                                         /blog-anakthsh-dedomenwn/   301
+/feed/                                         /blog-anakthsh-dedomenwn/   301
+/comments/feed/                                /blog-anakthsh-dedomenwn/   301
+/wp-login.php                                  /   301
+/wp-admin/*                                    /   301
+/en/the-company-datamind                       /en/the-company-datamind/   301
+/wp-content/uploads/*                          /images/wp/:splat   301

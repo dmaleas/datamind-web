@@ -1,0 +1,11 @@
+{
+  // Cloudflare Workers static assets: the site is plain files in ./dist, served free from Cloudflare's edge.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "datamind-web",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    "html_handling": "force-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}

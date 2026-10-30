@@ -1,0 +1,42 @@
+{
+  "el": {
+    "seoTitle": "Ανάκτηση δεδομένων | Data Recovery Αθήνα & Πάτρα | Datamind",
+    "description": "Ανάκτηση δεδομένων από σκληρούς δίσκους, SSD, RAID/NAS, USB, κάρτες SD και ransomware από το 2010. Δωρεάν διάγνωση και μεταφορά σε όλη την Ελλάδα.",
+    "eyebrow": "Ανάκτηση δεδομένων από το 2010",
+    "heading": "Χάσατε δεδομένα; Τα ανακτούμε.",
+    "lead": "Ανάκτηση από σκληρούς δίσκους, SSD, RAID, κάρτες μνήμης και ransomware για ιδιώτες και επιχειρήσεις. Δωρεάν διάγνωση και μεταφορά σε όλη την Ελλάδα.",
+    "ctaPrimary": "Καλέστε",
+    "ctaSecondary": "Πώς λειτουργεί",
+    "features": [
+      { "title": "Χρέωση μόνο με επιτυχία", "text": "Αν δεν ανακτηθούν τα δεδομένα σας, δεν πληρώνετε τίποτα." },
+      { "title": "Δωρεάν διάγνωση", "text": "Διάγνωση σε 1–2 ημέρες και σαφής προσφορά πριν από οποιαδήποτε εργασία." },
+      { "title": "Δωρεάν μεταφορά", "text": "Το μέσο σας παραλαμβάνεται με courier, χωρίς χρέωση, από όλη την Ελλάδα." },
+      { "title": "Clean room ISO-100", "text": "Οι σκληροί δίσκοι ανοίγονται μόνο σε ελεγχόμενο περιβάλλον χωρίς σκόνη." }
+    ],
+    "servicesHeading": "Υπηρεσίες ανάκτησης",
+    "servicesLead": "Ανάκτηση από όλα τα ψηφιακά αποθηκευτικά μέσα.",
+    "testimonialsHeading": "Γνώμες πελατών",
+    "ctaHeading": "Ξεκινήστε την ανάκτηση τώρα",
+    "ctaText": "Πέντε απλά βήματα από το τηλεφώνημα μέχρι την παράδοση των αρχείων σας."
+  },
+  "en": {
+    "seoTitle": "Data Recovery Services in Greece | Datamind",
+    "description": "Data recovery from hard disks, SSDs, RAID/NAS, USB sticks, SD cards and ransomware since 2010. Free diagnosis and free shipping. No data, no charge.",
+    "eyebrow": "Data recovery since 2010",
+    "heading": "Lost your data? We get it back.",
+    "lead": "Recovery from hard disks, SSDs, RAID, memory cards and ransomware for individuals and businesses. Free diagnosis and free shipping across Greece.",
+    "ctaPrimary": "Call",
+    "ctaSecondary": "How it works",
+    "features": [
+      { "title": "No data, no charge", "text": "If we can't recover your data, you pay nothing." },
+      { "title": "Free diagnosis", "text": "Diagnosis in 1–2 days and a clear quote before any work starts." },
+      { "title": "Free shipping", "text": "Your device is collected by courier, free of charge, from anywhere in Greece." },
+      { "title": "ISO-100 clean room", "text": "Hard disks are only opened in a controlled, dust-free environment." }
+    ],
+    "servicesHeading": "Recovery services",
+    "servicesLead": "Data recovery from every type of digital storage.",
+    "testimonialsHeading": "What clients say",
+    "ctaHeading": "Start your recovery now",
+    "ctaText": "Five simple steps from the first call to getting your files back."
+  }
+}

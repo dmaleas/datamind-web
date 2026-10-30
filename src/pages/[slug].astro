@@ -1,0 +1,120 @@
+---
+// One route for both service pages and blog posts, so they keep their old WordPress URLs (/slug/).
+import { getCollection, render } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import PricingTable from '../components/PricingTable.astro';
+import ServiceGrid from '../components/ServiceGrid.astro';
+import ContactCta from '../components/ContactCta.astro';
+import site from '../data/site.json';
+import { ui } from '../i18n';
+import { blogPosting, breadcrumbs, service } from '../lib/schema';
+
+export async function getStaticPaths() {
+  const services = await getCollection('services');
+  const posts = await getCollection('blog', (p) => !p.data.draft);
+  return [
+    ...services.map((entry) => ({ params: { slug: entry.id }, props: { kind: 'service' as const, entry } })),
+    ...posts.map((entry) => ({ params: { slug: entry.id }, props: { kind: 'post' as const, entry } })),
+  ];
+}
+
+const { kind, entry } = Astro.props;
+const { Content } = await render(entry);
+const t = ui.el;
+const url = Astro.url.pathname;
+const fmt = new Intl.DateTimeFormat('el-GR', { dateStyle: 'long' });
+
+const latest = kind === 'post'
+  ? (await getCollection('blog', (p) => !p.data.draft && p.id !== entry.id))
+      .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+      .slice(0, 3)
+  : [];
+---
+
+{kind === 'service' ? (() => {
+  const d = entry.data;
+  const crumbs = [
+    { name: t.home, url: '/' },
+    { name: t.services, url: '/#services' },
+    { name: d.cardTitle, url },
+  ];
+  return (
+    <Base title={d.seoTitle} description={d.description} schema={[breadcrumbs(crumbs), service(d.title, d.description, url)]}>
+      <PageHero title={d.title} intro={d.intro} crumbs={crumbs}>
+        <div class="hero-actions">
+          <a class="btn btn-accent btn-lg" href={`tel:${site.phoneIntl}`}>{t.call} {site.phone}</a>
+          <a class="btn btn-ghost btn-lg" href="/diadikasia/">Πώς λειτουργεί</a>
+        </div>
+      </PageHero>
+      <div class="wrap section service-layout">
+        <article class="prose">
+          <Content />
+          <p class="callout">{t.noDataNoCharge}</p>
+        </article>
+        <aside class="side-card">
+          <h2>Δωρεάν διάγνωση</h2>
+          <ul class="checks">
+            <li>Διάγνωση σε 1–2 ημέρες</li>
+            <li>Δωρεάν παραλαβή με courier</li>
+            <li>Σαφής προσφορά πριν από κάθε εργασία</li>
+            <li>Χρέωση μόνο με επιτυχία</li>
+          </ul>
+          <a class="btn btn-accent" href={`tel:${site.phoneIntl}`}>{site.phone}</a>
+          <a class="text-link" href={`mailto:${site.email}`}>{site.email}</a>
+        </aside>
+      </div>
+      {d.pricing && <div class="wrap section-tight"><PricingTable group={d.pricing} /></div>}
+      <section class="section section-alt">
+        <div class="wrap">
+          <div class="section-head"><h2>Άλλες υπηρεσίες</h2></div>
+          <ServiceGrid exclude={entry.id} />
+        </div>
+      </section>
+      <ContactCta />
+    </Base>
+  );
+})() : (() => {
+  const d = entry.data;
+  const crumbs = [
+    { name: t.home, url: '/' },
+    { name: t.blog, url: '/blog-anakthsh-dedomenwn/' },
+    { name: d.title, url },
+  ];
+  return (
+    <Base title={`${d.title} | Datamind`} description={d.description} type="article" image={d.image}
+      schema={[breadcrumbs(crumbs), blogPosting({ ...d, url })]}>
+      <PageHero title={d.title} crumbs={crumbs}>
+        <p class="meta"><time datetime={d.date.toISOString()}>{fmt.format(d.date)}</time></p>
+      </PageHero>
+      <div class="wrap section">
+        <article class="prose">
+          {d.image && <img class="post-image" src={d.image} alt="" width="800" height="450" />}
+          <Content />
+        </article>
+      </div>
+      <section class="section section-alt">
+        <div class="wrap">
+          <div class="section-head">
+            <h2>{t.latestPosts}</h2>
+            <p><a href="/blog-anakthsh-dedomenwn/">{t.backToBlog} →</a></p>
+          </div>
+          <ul class="post-grid">
+            {latest.map((p) => (
+              <li>
+                <a class="post-card" href={`/${p.id}/`}>
+                  {p.data.image && <img src={p.data.image} alt="" loading="lazy" width="400" height="225" />}
+                  <div class="post-card-body">
+                    <time datetime={p.data.date.toISOString()}>{fmt.format(p.data.date)}</time>
+                    <h3>{p.data.title}</h3>
+                  </div>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+      <ContactCta />
+    </Base>
+  );
+})()}

@@ -1,0 +1,41 @@
+---
+import { getCollection } from 'astro:content';
+import { servicesEn, ui, type Lang } from '../i18n';
+
+interface Props { lang?: Lang; exclude?: string }
+const { lang = 'el', exclude } = Astro.props;
+const en = lang === 'en';
+const services = (await getCollection('services'))
+  .filter((s) => s.id !== exclude)
+  .sort((a, b) => a.data.order - b.data.order);
+
+// Small line icons, one per service.
+const icons: Record<string, string> = {
+  'sklhroi-diskoi': '<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="2"/><path d="M12 12l5 4"/>',
+  ssd_disk: '<rect x="3" y="7" width="18" height="10" rx="2"/><path d="M7 11h4M7 14h2"/>',
+  raid: '<rect x="4" y="3" width="16" height="5" rx="1"/><rect x="4" y="10" width="16" height="5" rx="1"/><rect x="4" y="17" width="16" height="4" rx="1"/>',
+  'ananktisi-dedomenvn-apo-ransomwares': '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
+  'ananktisi-dedomenvn-apo-virtual_machines': '<rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/>',
+  'ananktisi-dedomenvn-apo-tapes': '<rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="8.5" cy="12" r="2"/><circle cx="15.5" cy="12" r="2"/>',
+  'ananktisi-dedomenvn-apo-usb_sticks': '<rect x="7" y="9" width="10" height="12" rx="2"/><path d="M9 9V3h6v6"/>',
+  'ananktisi-dedomenvn-apo-sd_cards': '<path d="M7 3h7l5 5v13H7z"/><path d="M10 3v4M13 3v4"/>',
+  'anaktisi-dedwmenwn-apo-cctv': '<path d="M3 8l13-4 2 6-13 4z"/><path d="M8 13l1 4H5M17 9l4-1"/>',
+};
+---
+
+<ul class="service-grid">
+  {services.map((s) => {
+    const e = servicesEn[s.id];
+    const href = en && e?.href ? e.href : `/${s.id}/`;
+    return (
+      <li>
+        <a class="service-card" href={href}>
+          <svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" set:html={icons[s.id] ?? ''} />
+          <h3>{en ? e?.title : s.data.cardTitle}</h3>
+          <p>{en ? e?.text : s.data.cardText}</p>
+          <span class="more">{ui[lang].readMore} →</span>
+        </a>
+      </li>
+    );
+  })}
+</ul>

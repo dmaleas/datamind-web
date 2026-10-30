@@ -1,0 +1,20 @@
+{
+  "name": "datamind-web",
+  "type": "module",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "images": "node scripts/fetch-wp-images.mjs",
+    "build": "node scripts/fetch-wp-images.mjs --soft && astro build",
+    "preview": "astro preview",
+    "check-urls": "node scripts/check-urls.mjs"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "astro": "^7.4.4"
+  },
+  "devDependencies": {
+    "wrangler": "^4.156.0"
+  }
+}

@@ -1,0 +1,21 @@
+---
+import testimonials from '../data/testimonials.json';
+
+interface Props { limit?: number }
+const { limit = 6 } = Astro.props;
+---
+
+<ul class="testimonials">
+  {testimonials.slice(0, limit).map((t) => (
+    <li class="testimonial">
+      <blockquote>{t.text}</blockquote>
+      <div class="who">
+        {t.photo && <img src={t.photo} alt="" width="48" height="48" loading="lazy" />}
+        <div>
+          <strong>{t.name}</strong>
+          <span>{t.role}</span>
+        </div>
+      </div>
+    </li>
+  ))}
+</ul>

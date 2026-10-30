@@ -1,0 +1,38 @@
+{
+  "name": "Datamind",
+  "legalName": "Datamind",
+  "url": "https://www.datamind.gr",
+  "phone": "211-800-1320",
+  "phoneIntl": "+302118001320",
+  "email": "info@datamind.gr",
+  "foundingYear": 2010,
+  "facebook": "https://www.facebook.com/datamind",
+  "mapsUrl": "https://goo.gl/maps/nwMHsX94VqG2",
+  "ga4Id": "",
+  "locations": [
+    {
+      "name": "Datamind Αθήνα",
+      "nameEn": "Datamind Athens",
+      "street": "Σπύρου Τρικούπη 20",
+      "streetEn": "Spirou Trikoupi 20",
+      "city": "Αθήνα",
+      "cityEn": "Athens",
+      "postalCode": "10683",
+      "hours": "Δευτ – Παρ: 9:00 – 17:00",
+      "hoursEn": "Mon – Fri: 9:00 – 17:00",
+      "openingHours": ["Mo-Fr 09:00-17:00"]
+    },
+    {
+      "name": "Datamind Πάτρα (έδρα)",
+      "nameEn": "Datamind Patras (headquarters)",
+      "street": "Επιστημονικό Πάρκο Πατρών",
+      "streetEn": "Patras Science Park",
+      "city": "Ρίο Πατρών",
+      "cityEn": "Rio, Patras",
+      "postalCode": "26504",
+      "hours": "Δευτ – Σαβ: 9:00 – 18:00",
+      "hoursEn": "Mon – Sat: 9:00 – 18:00",
+      "openingHours": ["Mo-Sa 09:00-18:00"]
+    }
+  ]
+}

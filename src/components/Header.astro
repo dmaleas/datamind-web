@@ -1,0 +1,65 @@
+---
+import { getCollection } from 'astro:content';
+import site from '../data/site.json';
+import { alternateOf, nav, servicesEn, ui, type Lang } from '../i18n';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const t = ui[lang];
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+const alt = alternateOf(Astro.url.pathname);
+const switchHref = lang === 'el' ? alt.en ?? '/en/' : alt.el ?? '/';
+const homeHref = lang === 'el' ? '/' : '/en/';
+const current = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="wrap bar">
+    <a class="brand" href={homeHref} aria-label="Datamind">
+      <img src="/logo.svg" alt="" width="36" height="36" />
+      <span class="brand-name">DATAMIND</span>
+    </a>
+
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span class="nav-toggle-bars" aria-hidden="true"></span>
+      <span class="sr-only">{t.menu}</span>
+    </button>
+
+    <nav id="site-nav" class="site-nav" aria-label={t.menu}>
+      <ul class="nav-list">
+        {nav(lang).map((item) =>
+          item.services ? (
+            <li class="has-sub">
+              <a href={item.href}>{item.label}</a>
+              <ul class="sub">
+                {services.map((s) => {
+                  const en = servicesEn[s.id];
+                  const href = lang === 'en' && en?.href ? en.href : `/${s.id}/`;
+                  return <li><a href={href} aria-current={current === href ? 'page' : undefined}>{lang === 'en' ? en?.title : s.data.cardTitle}</a></li>;
+                })}
+              </ul>
+            </li>
+          ) : (
+            <li><a href={item.href} aria-current={current === item.href ? 'page' : undefined}>{item.label}</a></li>
+          ),
+        )}
+        <li class="lang"><a href={switchHref} hreflang={lang === 'el' ? 'en' : 'el'}>{t.otherLang}</a></li>
+      </ul>
+    </nav>
+
+    <a class="btn btn-accent call" href={`tel:${site.phoneIntl}`}>
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+      <span>{site.phone}</span>
+    </a>
+  </div>
+</header>
+
+<script>
+  const btn = document.querySelector<HTMLButtonElement>('.nav-toggle');
+  const navEl = document.getElementById('site-nav');
+  btn?.addEventListener('click', () => {
+    const open = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!open));
+    navEl?.classList.toggle('open', !open);
+  });
+</script>

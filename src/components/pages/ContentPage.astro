@@ -1,0 +1,30 @@
+---
+import { getEntry, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHero from '../PageHero.astro';
+import ContactCta from '../ContactCta.astro';
+import { ui, type Lang } from '../../i18n';
+import { breadcrumbs } from '../../lib/schema';
+
+interface Props { id: string; lang: Lang }
+const { id, lang } = Astro.props;
+const entry = await getEntry('pages', id);
+if (!entry) throw new Error(`Missing page content: ${id}`);
+const { Content } = await render(entry);
+const home = lang === 'el' ? '/' : '/en/';
+const crumbs = [
+  { name: ui[lang].home, url: home },
+  { name: entry.data.title, url: Astro.url.pathname },
+];
+---
+
+<Base title={entry.data.seoTitle} description={entry.data.description} lang={lang} schema={[breadcrumbs(crumbs)]}>
+  <PageHero title={entry.data.title} crumbs={crumbs} />
+  <div class="wrap section">
+    <article class="prose">
+      <Content />
+    </article>
+  </div>
+  <slot />
+  <ContactCta lang={lang} />
+</Base>

@@ -1,0 +1,199 @@
+# Pages CMS configuration: sign in at https://app.pagescms.org with GitHub to edit the site in the browser.
+# Every save is a Git commit, and Cloudflare rebuilds the live site automatically.
+
+media:
+  input: public/images
+  output: /images
+
+content:
+  - name: blog
+    label: Ιστολόγιο (άρθρα)
+    type: collection
+    path: src/content/blog
+    filename: "{fields.slug}.md"
+    view:
+      primary: title
+      fields: [title, date, draft]
+      sort: [date]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Τίτλος
+        type: string
+        required: true
+      - name: slug
+        label: Διεύθυνση (URL) — λατινικά, π.χ. anakthsh-dedomenwn-nvme
+        description: Μόνο για νέα άρθρα. Γίνεται η διεύθυνση datamind.gr/<slug>/
+        type: string
+        pattern: "^[a-z0-9-_]+$"
+      - name: description
+        label: Περιγραφή για Google (έως ~155 χαρακτήρες)
+        type: text
+        required: true
+        options: { maxlength: 170 }
+      - name: date
+        label: Ημερομηνία
+        type: date
+        required: true
+        options: { format: yyyy-MM-dd }
+      - name: image
+        label: Κεντρική εικόνα
+        type: image
+      - name: draft
+        label: Πρόχειρο (δεν δημοσιεύεται)
+        type: boolean
+        default: false
+      - name: body
+        label: Κείμενο
+        type: rich-text
+        options: { format: markdown }
+
+  - name: services
+    label: Υπηρεσίες
+    type: collection
+    path: src/content/services
+    filename: "{fields.slug}.md"
+    view:
+      primary: title
+      fields: [cardTitle, order]
+      sort: [order]
+      default: { sort: order, order: asc }
+    fields:
+      - { name: title, label: Τίτλος σελίδας (H1), type: string, required: true }
+      - { name: slug, label: Διεύθυνση (URL) — μόνο για νέες υπηρεσίες, type: string, pattern: "^[a-z0-9-_]+$" }
+      - { name: seoTitle, label: Τίτλος για Google, type: string, required: true }
+      - { name: description, label: Περιγραφή για Google, type: text, required: true, options: { maxlength: 170 } }
+      - { name: cardTitle, label: Σύντομο όνομα (μενού και κάρτες), type: string, required: true }
+      - { name: cardText, label: Μία γραμμή για την κάρτα στην αρχική, type: string, required: true }
+      - { name: intro, label: Εισαγωγή (κάτω από τον τίτλο), type: text, required: true }
+      - { name: order, label: Σειρά εμφάνισης, type: number, required: true }
+      - name: pricing
+        label: Πίνακας τιμών
+        type: select
+        options:
+          values:
+            - { value: hdd, label: Σκληροί δίσκοι }
+            - { value: ssd, label: SSD }
+            - { value: usb, label: USB }
+            - { value: sd, label: SD / microSD }
+      - { name: body, label: Κείμενο, type: rich-text, options: { format: markdown } }
+
+  - name: pages
+    label: Σελίδες (εταιρία, διαδικασία)
+    type: collection
+    path: src/content/pages
+    subfolders: true
+    view: { primary: title }
+    fields:
+      - { name: title, label: Τίτλος, type: string, required: true }
+      - { name: seoTitle, label: Τίτλος για Google, type: string, required: true }
+      - { name: description, label: Περιγραφή για Google, type: text, required: true }
+      - { name: body, label: Κείμενο, type: rich-text, options: { format: markdown } }
+
+  - name: site
+    label: Στοιχεία εταιρίας
+    type: file
+    path: src/data/site.json
+    format: json
+    fields:
+      - { name: name, label: Όνομα, type: string }
+      - { name: legalName, label: Επωνυμία, type: string }
+      - { name: url, label: Διεύθυνση site, type: string }
+      - { name: phone, label: Τηλέφωνο (όπως εμφανίζεται), type: string }
+      - { name: phoneIntl, label: Τηλέφωνο διεθνές (+30...), type: string }
+      - { name: email, label: Email, type: string }
+      - { name: foundingYear, label: Έτος ίδρυσης, type: number }
+      - { name: facebook, label: Facebook, type: string }
+      - { name: mapsUrl, label: Google Maps, type: string }
+      - { name: ga4Id, label: Google Analytics ID (κενό = ανενεργό), type: string }
+      - name: locations
+        label: Γραφεία
+        type: object
+        list: true
+        fields:
+          - { name: name, label: Όνομα, type: string }
+          - { name: nameEn, label: Όνομα (EN), type: string }
+          - { name: street, label: Διεύθυνση, type: string }
+          - { name: streetEn, label: Διεύθυνση (EN), type: string }
+          - { name: city, label: Πόλη, type: string }
+          - { name: cityEn, label: Πόλη (EN), type: string }
+          - { name: postalCode, label: ΤΚ, type: string }
+          - { name: hours, label: Ωράριο, type: string }
+          - { name: hoursEn, label: Ωράριο (EN), type: string }
+          - { name: openingHours, label: "Ωράριο για Google (π.χ. Mo-Fr 09:00-17:00)", type: string, list: true }
+
+  - name: pricing
+    label: Τιμές
+    type: file
+    path: src/data/pricing.json
+    format: json
+    fields:
+      - { name: vatNote, label: Σημείωση ΦΠΑ, type: text }
+      - { name: vatNoteEn, label: Σημείωση ΦΠΑ (EN), type: text }
+      - name: groups
+        label: Κατηγορίες
+        type: object
+        list: true
+        fields:
+          - { name: id, label: Κωδικός, type: string }
+          - { name: title, label: Τίτλος, type: string }
+          - { name: titleEn, label: Τίτλος (EN), type: string }
+          - { name: service, label: Σελίδα υπηρεσίας (slug), type: string }
+          - name: items
+            label: Τιμές
+            type: object
+            list: true
+            fields:
+              - { name: name, label: Πρόβλημα, type: string }
+              - { name: nameEn, label: Πρόβλημα (EN), type: string }
+              - { name: price, label: Τιμή, type: string }
+              - { name: examples, label: Παραδείγματα, type: string, list: true }
+              - { name: examplesEn, label: Παραδείγματα (EN), type: string, list: true }
+
+  - name: testimonials
+    label: Γνώμες πελατών
+    type: file
+    path: src/data/testimonials.json
+    format: json
+    list: true
+    fields:
+      - { name: name, label: Όνομα, type: string }
+      - { name: role, label: Ιδιότητα, type: string }
+      - { name: photo, label: Φωτογραφία, type: image }
+      - { name: text, label: Κείμενο, type: text }
+
+  - name: home
+    label: Αρχική σελίδα
+    type: file
+    path: src/data/home.json
+    format: json
+    fields:
+      - name: el
+        label: Ελληνικά
+        type: object
+        fields: &homefields
+          - { name: seoTitle, label: Τίτλος για Google, type: string }
+          - { name: description, label: Περιγραφή για Google, type: text }
+          - { name: eyebrow, label: Μικρός τίτλος, type: string }
+          - { name: heading, label: Κεντρικός τίτλος, type: string }
+          - { name: lead, label: Υπότιτλος, type: text }
+          - { name: ctaPrimary, label: Κουμπί κλήσης, type: string }
+          - { name: ctaSecondary, label: Δεύτερο κουμπί, type: string }
+          - name: features
+            label: Πλεονεκτήματα
+            type: object
+            list: true
+            fields:
+              - { name: title, label: Τίτλος, type: string }
+              - { name: text, label: Κείμενο, type: string }
+          - { name: servicesHeading, label: Τίτλος υπηρεσιών, type: string }
+          - { name: servicesLead, label: Υπότιτλος υπηρεσιών, type: string }
+          - { name: testimonialsHeading, label: Τίτλος γνωμών, type: string }
+          - { name: ctaHeading, label: Τίτλος τελικής ενότητας, type: string }
+          - { name: ctaText, label: Κείμενο τελικής ενότητας, type: text }
+      - name: en
+        label: English
+        type: object
+        fields: *homefields

@@ -1,0 +1,51 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../PageHero.astro';
+import site from '../../data/site.json';
+import { ui, type Lang } from '../../i18n';
+import { breadcrumbs } from '../../lib/schema';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+const en = lang === 'en';
+const t = ui[lang];
+const crumbs = [
+  { name: t.home, url: en ? '/en/' : '/' },
+  { name: t.contact, url: Astro.url.pathname },
+];
+const title = en ? 'Contact | Datamind data recovery, Athens & Patras' : 'Επικοινωνία | Datamind ανάκτηση δεδομένων Αθήνα & Πάτρα';
+const description = en
+  ? 'Call +30 211-800-1320 or email info@datamind.gr. Datamind offices in Athens and at the Patras Science Park. Free courier shipping from all of Greece.'
+  : 'Καλέστε στο 211-800-1320 ή στείλτε email στο info@datamind.gr. Γραφεία στην Αθήνα και στο Επιστημονικό Πάρκο Πατρών. Δωρεάν μεταφορά από όλη την Ελλάδα.';
+const intro = en
+  ? 'Tell us what happened to your device. We reply the same day and can arrange free courier pickup from anywhere in Greece.'
+  : 'Περιγράψτε μας τι συνέβη στο αποθηκευτικό σας μέσο. Απαντάμε αυθημερόν και κανονίζουμε δωρεάν παραλαβή με courier από όλη την Ελλάδα.';
+---
+
+<Base title={title} description={description} lang={lang} schema={[breadcrumbs(crumbs)]}>
+  <PageHero title={t.contact} intro={intro} crumbs={crumbs}>
+    <div class="hero-actions">
+      <a class="btn btn-accent btn-lg" href={`tel:${site.phoneIntl}`}>{t.call} {site.phone}</a>
+      <a class="btn btn-ghost btn-lg" href={`mailto:${site.email}`}>{site.email}</a>
+    </div>
+  </PageHero>
+  <div class="wrap section">
+    <div class="location-grid">
+      {site.locations.map((l) => (
+        <section class="location">
+          <h2>{en ? l.nameEn : l.name}</h2>
+          <address>
+            {en ? l.streetEn : l.street}<br />
+            {en ? l.cityEn : l.city} {l.postalCode}
+          </address>
+          <dl>
+            <dt>{en ? 'Phone' : 'Τηλέφωνο'}</dt><dd><a href={`tel:${site.phoneIntl}`}>{site.phone}</a></dd>
+            <dt>Email</dt><dd><a href={`mailto:${site.email}`}>{site.email}</a></dd>
+            <dt>{t.hours}</dt><dd>{en ? l.hoursEn : l.hours}</dd>
+          </dl>
+          <a class="text-link" href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${l.street}, ${l.city} ${l.postalCode}`)}`} rel="noopener">{t.directions} →</a>
+        </section>
+      ))}
+    </div>
+  </div>
+</Base>

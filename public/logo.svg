@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="Datamind">
+  <rect width="48" height="48" rx="11" fill="#12304f"/>
+  <circle cx="24" cy="24" r="14" fill="none" stroke="#3d6d9c" stroke-width="3"/>
+  <path d="M24 10a14 14 0 0 1 13.3 9.6" fill="none" stroke="#f5a524" stroke-width="3.4" stroke-linecap="round"/>
+  <path d="M38.6 13.8l-1.1 6.2-5.9-2.2" fill="none" stroke="#f5a524" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="24" cy="24" r="4.2" fill="#ffffff"/>
+</svg>
