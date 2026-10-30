@@ -3,6 +3,10 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "datamind-web",
   "compatibility_date": "2026-10-01",
+  "workers_dev": true,
+  "preview_urls": true,
+  // Required by `wrangler preview`, which Cloudflare runs for non-main branches (preview URLs per branch).
+  "previews": {},
   "assets": {
     "directory": "./dist",
     "html_handling": "force-trailing-slash",
