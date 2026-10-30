@@ -1,0 +1,38 @@
+# Copies the images from the old WordPress site into public/images/wp and commits them,
+# so the new site keeps working after WordPress is shut down.
+# Runs once when this file is added, and can be re-run from the Actions tab ("Run workflow").
+name: Save WordPress images
+
+on:
+  workflow_dispatch:
+    inputs:
+      wp_origin:
+        description: Old WordPress address (change only after the DNS switch, e.g. http://OLD-SERVER-IP)
+        default: https://www.datamind.gr
+  push:
+    branches: [main]
+    paths: [.github/workflows/save-images.yml]
+
+permissions:
+  contents: write
+
+jobs:
+  save:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Download images
+        run: node scripts/fetch-wp-images.mjs
+        env:
+          WP_ORIGIN: ${{ inputs.wp_origin || 'https://www.datamind.gr' }}
+      - name: Commit images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/images
+          git diff --cached --quiet && echo "No new images" && exit 0
+          git commit -m "Save WordPress images into the repo"
+          git push
