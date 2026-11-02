@@ -138,6 +138,7 @@ content:
       - { name: certifications, label: Πιστοποιήσεις, type: string, list: true }
       - { name: facebook, label: Facebook, type: string }
       - { name: mapsUrl, label: Google Maps, type: string }
+      - { name: reviewUrl, label: Σύνδεσμος αξιολόγησης Google, type: string }
       - { name: ga4Id, label: Google Analytics ID (κενό = ανενεργό), type: string }
       - name: locations
         label: Γραφεία
