@@ -56,17 +56,15 @@ if (props.kind === 'post') {
       <div class="wrap">
         <div class="section-head">
           <h2>{t.latestPosts}</h2>
-          <p><a href="/blog-anakthsh-dedomenwn/">{t.backToBlog} →</a></p>
+          <p><a href="/blog-anakthsh-dedomenwn/">{t.backToBlog}</a></p>
         </div>
         <ul class="post-grid">
           {post.latest.map((p) => (
             <li>
               <a class="post-card" href={`/${p.id}/`}>
                 {p.data.image && <img src={p.data.image} alt="" loading="lazy" width="400" height="225" />}
-                <div class="post-card-body">
-                  <time datetime={p.data.date.toISOString()}>{fmt.format(p.data.date)}</time>
-                  <h3>{p.data.title}</h3>
-                </div>
+                <time datetime={p.data.date.toISOString()}>{fmt.format(p.data.date)}</time>
+                <h3>{p.data.title}</h3>
               </a>
             </li>
           ))}

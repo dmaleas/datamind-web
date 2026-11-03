@@ -13,7 +13,7 @@ if (!slug || !title) {
 }
 
 const W = 1200, H = 675;
-const NAVY = '#0b2239', NAVY2 = '#163a63', ACCENT = '#f5a524', LIGHT = '#dbe6f2';
+const NAVY = '#0b2239', NAVY2 = '#163a63', ACCENT = '#3fae72', LIGHT = '#dbe6f2';
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 // Icons are drawn in a 360x360 box (white outlines, accent details).
