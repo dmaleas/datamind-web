@@ -26,8 +26,8 @@ const crumbs = [
 <Base title={d.seoTitle} description={d.description} lang={lang} schema={[breadcrumbs(crumbs), service(d.title, d.description, url, lang)]}>
   <PageHero title={d.title} intro={d.intro} crumbs={crumbs}>
     <div class="hero-actions">
-      <a class="btn btn-primary btn-lg" href={`tel:${site.phoneIntl}`}>{t.phoneLabel} {site.phone}</a>
-      <a class="btn btn-secondary btn-lg" href={lang === 'el' ? '/diadikasia/' : '/en/diadikasia_anaktisis/'}>{t.processCta}</a>
+      <a class="btn btn-accent btn-lg" href={`tel:${site.phoneIntl}`}>{t.phoneLabel} {site.phone}</a>
+      <a class="btn btn-ghost btn-lg" href={lang === 'el' ? '/diadikasia/' : '/en/diadikasia_anaktisis/'}>{t.processCta}</a>
     </div>
   </PageHero>
   <div class="wrap section service-layout">
@@ -40,7 +40,7 @@ const crumbs = [
       <ul class="checks">
         {t.sidePoints.map((p) => <li>{p}</li>)}
       </ul>
-      <a class="btn btn-primary" href={`tel:${site.phoneIntl}`}>{site.phone}</a>
+      <a class="btn btn-accent" href={`tel:${site.phoneIntl}`}>{site.phone}</a>
       <a class="text-link" href={`mailto:${site.email}`}>{site.email}</a>
     </aside>
   </div>

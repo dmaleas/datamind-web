@@ -23,9 +23,11 @@ const crumbs = [{ name: 'Αρχική', url: '/' }, { name: 'Ιστολόγιο'
         <li>
           <a class="post-card" href={`/${p.id}/`}>
             {p.data.image && <img src={p.data.image} alt="" loading="lazy" width="400" height="225" />}
-            <time datetime={p.data.date.toISOString()}>{fmt.format(p.data.date)}</time>
-            <h2>{p.data.title}</h2>
-            <p>{p.data.description}</p>
+            <div class="post-card-body">
+              <time datetime={p.data.date.toISOString()}>{fmt.format(p.data.date)}</time>
+              <h2>{p.data.title}</h2>
+              <p>{p.data.description}</p>
+            </div>
           </a>
         </li>
       ))}

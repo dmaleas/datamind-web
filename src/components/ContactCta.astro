@@ -2,23 +2,20 @@
 import site from '../data/site.json';
 import { ui, type Lang } from '../i18n';
 
-interface Props { lang?: Lang; heading?: string; text?: string }
-const { lang = 'el', heading, text } = Astro.props;
+interface Props { lang?: Lang }
+const { lang = 'el' } = Astro.props;
 const t = ui[lang];
-const en = lang === 'en';
 ---
 
-<section class="call-band">
-  <div class="wrap call-inner">
-    <div class="call-copy">
-      <h2>{heading ?? t.ctaHeading}</h2>
-      <p>{text ?? t.ctaText}</p>
+<section class="cta">
+  <div class="wrap cta-inner">
+    <div>
+      <h2>{t.ctaHeading}</h2>
+      <p>{t.ctaText}</p>
     </div>
-    <div class="call-number">
-      <a href={`tel:${site.phoneIntl}`} aria-label={`${t.phoneLabel} ${site.phone}`}>{site.phone}</a>
-      <p>
-        {en ? 'or write to' : 'ή γράψτε μας στο'} <a href={`mailto:${site.email}`}>{site.email}</a>
-      </p>
+    <div class="cta-actions">
+      <a class="btn btn-accent btn-lg" href={`tel:${site.phoneIntl}`}>{t.phoneLabel} {site.phone}</a>
+      <a class="btn btn-ghost btn-lg" href={`mailto:${site.email}`}>{t.emailUs}</a>
     </div>
   </div>
 </section>
