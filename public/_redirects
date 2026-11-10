@@ -13,3 +13,21 @@
 /wp-admin/*                                    /   301
 /en/the-company-datamind                       /en/the-company-datamind/   301
 /wp-content/uploads/*                          /images/wp/:splat   301
+
+# Old "index.php" permalinks and short page names (seen in Google Search Console, Nov 2026)
+/index.php                                     /   301
+/index.php/cctv/                               /anaktisi-dedwmenwn-apo-cctv/   301
+/index.php/virtual_machines/                   /ananktisi-dedomenvn-apo-virtual_machines/   301
+/index.php/sd_cards/                           /ananktisi-dedomenvn-apo-sd_cards/   301
+/index.php/usb_sticks/                         /ananktisi-dedomenvn-apo-usb_sticks/   301
+/index.php/tapes/                              /ananktisi-dedomenvn-apo-tapes/   301
+/index.php/ransomwares/                        /ananktisi-dedomenvn-apo-ransomwares/   301
+/cctv/                                         /anaktisi-dedwmenwn-apo-cctv/   301
+/virtual_machines/                             /ananktisi-dedomenvn-apo-virtual_machines/   301
+/sd_cards/                                     /ananktisi-dedomenvn-apo-sd_cards/   301
+/usb_sticks/                                   /ananktisi-dedomenvn-apo-usb_sticks/   301
+/tapes/                                        /ananktisi-dedomenvn-apo-tapes/   301
+/ransomwares/                                  /ananktisi-dedomenvn-apo-ransomwares/   301
+/index.php/*                                   /:splat   301
+# WordPress article feeds -> the article itself
+/:slug/feed/                                   /:slug/   301
