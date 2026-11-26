@@ -28,6 +28,28 @@
 /usb_sticks/                                   /ananktisi-dedomenvn-apo-usb_sticks/   301
 /tapes/                                        /ananktisi-dedomenvn-apo-tapes/   301
 /ransomwares/                                  /ananktisi-dedomenvn-apo-ransomwares/   301
+
+# Same old URLs without the trailing slash (some backlinks and typed links omit it;
+# real pages redirect to the slash version on their own, these rules do not)
+/anaktisi-dedomenwn-apo-sklhro-disko           /sklhroi-diskoi/   301
+/ananktisi-dedomenvn-apo-ssd_disk              /ssd_disk/   301
+/ananktisi-dedomenvn-apo-raid                  /raid/   301
+/diadikasia-anakthshs-dedomenwn                /diadikasia/   301
+/epikoinwnia-anakthsh-dedomenwn                /epikoinwnia/   301
+/feed                                          /blog-anakthsh-dedomenwn/   301
+/comments/feed                                 /blog-anakthsh-dedomenwn/   301
+/index.php/cctv                                /anaktisi-dedwmenwn-apo-cctv/   301
+/index.php/virtual_machines                    /ananktisi-dedomenvn-apo-virtual_machines/   301
+/index.php/sd_cards                            /ananktisi-dedomenvn-apo-sd_cards/   301
+/index.php/usb_sticks                          /ananktisi-dedomenvn-apo-usb_sticks/   301
+/index.php/tapes                               /ananktisi-dedomenvn-apo-tapes/   301
+/index.php/ransomwares                         /ananktisi-dedomenvn-apo-ransomwares/   301
+/cctv                                          /anaktisi-dedwmenwn-apo-cctv/   301
+/virtual_machines                              /ananktisi-dedomenvn-apo-virtual_machines/   301
+/sd_cards                                      /ananktisi-dedomenvn-apo-sd_cards/   301
+/usb_sticks                                    /ananktisi-dedomenvn-apo-usb_sticks/   301
+/tapes                                         /ananktisi-dedomenvn-apo-tapes/   301
+/ransomwares                                   /ananktisi-dedomenvn-apo-ransomwares/   301
 /index.php/*                                   /:splat   301
 # WordPress article feeds -> the article itself
 /:slug/feed/                                   /:slug/   301

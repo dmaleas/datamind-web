@@ -14,9 +14,16 @@ const redirects = (await readFile(join(ROOT, 'public/_redirects'), 'utf8'))
 const matchRedirect = (path) => redirects.find(([from]) =>
   from.endsWith('*') ? path.startsWith(from.slice(0, -1)) : from === path);
 
-let bad = 0;
-for (const url of old) {
+// Each old URL is checked as written and, if it ends in "/", without the slash too:
+// links on other sites often drop it. A real page in dist/ covers both forms
+// (the host adds the slash itself); a redirect rule only matches its exact form.
+const paths = old.flatMap((url) => {
   const path = new URL(url).pathname;
+  return path.length > 1 && path.endsWith('/') ? [path, path.slice(0, -1)] : [path];
+});
+
+let bad = 0;
+for (const path of paths) {
   const decoded = decodeURIComponent(path);
   try {
     await access(join(ROOT, 'dist', decoded, 'index.html'));
