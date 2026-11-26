@@ -140,6 +140,8 @@ content:
       - { name: mapsUrl, label: Google Maps, type: string }
       - { name: reviewUrl, label: Σύνδεσμος αξιολόγησης Google, type: string }
       - { name: ga4Id, label: Google Analytics ID (κενό = ανενεργό), type: string }
+      - { name: googleAdsId, label: Google Ads ID (AW-…, κενό = ανενεργό), type: string }
+      - { name: googleAdsCallConversion, label: Google Ads μετατροπή κλικ σε τηλέφωνο (AW-…/…), type: string }
       - name: locations
         label: Γραφεία
         type: object
