@@ -65,3 +65,11 @@ Per-page titles and descriptions, canonical URLs, sitemap, robots.txt, Greek/Eng
 ## Analytics
 
 `ga4Id` in `src/data/site.json` is empty on purpose: Google Analytics sets cookies, which needs a consent banner under GDPR. The cookie-free alternative is Cloudflare Web Analytics (Worker → Metrics, one toggle). To keep GA4, put the old ID (`G-5ZT4E2JSY7`) there and add a consent banner.
+
+## Google Ads conversion tracking
+
+`googleAdsId` (`AW-929300763`) loads the Google tag on every page (`src/layouts/Base.astro`). It runs in Consent Mode v2 with all consent **denied**, so it sets no cookies and needs no banner; Google gets cookie-free pings and models conversions.
+
+`googleAdsCallConversion` is the conversion "Κλικ για κλήση": every click on a `tel:` link counts as one. Calls straight from the ads are a separate conversion set up in Google Ads.
+
+To measure more precisely, add a consent banner that calls `gtag('consent', 'update', { ad_storage: 'granted', ad_user_data: 'granted', ... })` when the visitor accepts. Empty `googleAdsId` turns the tag off.

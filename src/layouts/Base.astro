@@ -54,15 +54,46 @@ const jsonLd = [organization(lang), ...schema];
 
     {jsonLd.map((j) => <script type="application/ld+json" set:html={JSON.stringify(j)} />)}
 
-    {site.ga4Id && (
+    {(site.googleAdsId || site.ga4Id) && (
       <>
-        <script async src={`https://www.googletagmanager.com/gtag/js?id=${site.ga4Id}`}></script>
-        <script is:inline define:vars={{ id: site.ga4Id }}>
+        {/*
+          Google tag in Consent Mode v2 with everything denied: no cookies are set,
+          so no consent banner is needed (GDPR). Google receives cookie-free pings
+          and models conversions. url_passthrough keeps the ad click ID (gclid) in
+          internal links so a call click on a later page is still attributed.
+          If a consent banner is added later, it should call
+          gtag('consent', 'update', {...: 'granted'}) after the visitor accepts.
+        */}
+        <script is:inline define:vars={{ adsId: site.googleAdsId, ga4Id: site.ga4Id, callConversion: site.googleAdsCallConversion }}>
           window.dataLayer = window.dataLayer || [];
-          function gtag() { dataLayer.push(arguments); }
+          function gtag() { window.dataLayer.push(arguments); }
+          window.gtag = gtag;
+          gtag('consent', 'default', {
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+            analytics_storage: 'denied',
+          });
+          gtag('set', 'url_passthrough', true);
           gtag('js', new Date());
-          gtag('config', id);
+          if (adsId) gtag('config', adsId);
+          if (ga4Id) gtag('config', ga4Id);
+
+          // Google Ads conversion "Κλικ για κλήση": any click on a tel: link.
+          if (callConversion) {
+            document.addEventListener('click', (e) => {
+              const link = e.target instanceof Element && e.target.closest('a[href^="tel:"]');
+              if (!link) return;
+              gtag('event', 'conversion', {
+                send_to: callConversion,
+                value: 1.0,
+                currency: 'EUR',
+                transport_type: 'beacon',
+              });
+            });
+          }
         </script>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${site.googleAdsId || site.ga4Id}`}></script>
       </>
     )}
   </head>
